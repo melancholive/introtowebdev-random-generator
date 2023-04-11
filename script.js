@@ -1,28 +1,41 @@
-let titleText = document.getElementById("titleText");
-let questionText = document.getElementById("questionText");
-let	userInput = document.getElementById("userInput");
-let	executeButton = document.getElementById("executeButton");
-let recommendationText = document.getElementById("recommendationText");
+var heading = document.getElementById("title");
+var executeButton = document.getElementById("executeButton");
+var outputParagraph = document.getElementById("outputText");
+var inputElement = document.getElementById("myInput");
 
-
-let colorPalette = ["#f4e6ae", "#aef4e9", "#f4aeae", "#b5f4ae", "#aee6f4", "#d0aad8"];
 let songList = ["lover's oath", "elogia cinerosa", "midnight mondstadt", "hanachirusato", "ripples of daydream", "fateful departing", "invitation of windblume", "innocent age"];
+let colorPalette = ["#f4e6ae", "#aef4e9", "#f4aeae", "#b5f4ae", "#aee6f4", "#d0aad8"];
+let fontStyles = ["Times New Roman", "Georgia", "Garamond", "Arial", "Verdana", "Helvetica"];
+let fontSizes = ["xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large"];
 
-executeButton.addEventListener("click",function(){
-	var newUserInput = userInput.value; // use var since it is temp
-	console.log(newUserInput);
-	generate(newUserInput);
-	restyle();
+
+executeButton.addEventListener("click", function(){
+  var currentInputText = inputElement.value;
+  generate(currentInputText);
+  restyle();
 });
 
-function generate(incUserInput){ // use inc to help differentiate variables
-	var songIndex = Math.floor(Math.random() * songList.length);
-	var randomSong = songList[songIndex];
-	recommendationText.innerText = incUserInput + ", i recommend to you the song, '" + randomSong + "'";
+function generate(incUserInput) {
+  let songIndex = Math.floor(Math.random() * songList.length);
+  console.log(incUserInput);
+  let randomSong = songList[songIndex];
+  outputParagraph.innerText = "hello " + incUserInput + ", i recommend to you the song, '" + randomSong + "'";
 }
 
-function restyle(){
-	var colorIndex = Math.floor(Math.random() * colorPalette.length);
-	var randomColor = colorPalette[colorIndex];
-	recommendationText.style.color = randomColor;
+function restyle() {
+  // random font color
+  let colorIndex = Math.floor(Math.random() * colorPalette.length);
+  let randomColor = colorPalette[colorIndex];
+  outputParagraph.style.color = randomColor;
+
+  // random font size
+  let fontIndex = Math.floor(Math.random() * fontStyles.length);
+  let randomFont = fontStyles[fontIndex];
+
+  outputParagraph.style.fontFamily = randomFont;
+
+  let fontSizeIndex = Math.floor(Math.random() * fontSizes.length);
+  let randomFontSize = fontSizes[fontSizeIndex];
+
+  outputParagraph.style.fontSize = randomFontSize;
 }
