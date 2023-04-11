@@ -1,0 +1,12 @@
+body{
+	box-sizing: border-box;
+	background-color: #385147;
+	color: #e6f3e4;
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+}
+
+img {
+	width: 100vw;
+}
